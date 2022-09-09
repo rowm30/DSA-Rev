@@ -18,6 +18,8 @@ public class BinarySearchQuestion1 {
 
         System.out.println("first occurance of key is");
         System.out.println(fo(arr, n, k));
+        System.out.println("Last occurance of key is");
+        System.out.println(lo(arr, n, k));
     }
 
     static int fo(int[] arr, int n, int key){
@@ -29,7 +31,24 @@ public class BinarySearchQuestion1 {
                 ans = mid;
                 e = mid-1;
             } else if (key> arr[mid]) {//right mai jao
-                s = e +1;
+                s = mid +1;
+            }else if(key < arr[mid]){//left mai jao
+                e = mid -1;
+            }
+            mid = (s + e)/2;
+        }
+        return ans;
+    }
+    static int lo(int[] arr, int n, int key){
+        int s = 0, e = n-1;
+        int mid = (s + e)/2;
+        int ans = -1;
+        while (s<=e) {
+            if (arr[mid]==key) {
+                ans = mid;
+                s = mid+1;
+            } else if (key> arr[mid]) {//right mai jao
+                s = mid +1;
             }else if(key < arr[mid]){//left mai jao
                 e = mid -1;
             }
